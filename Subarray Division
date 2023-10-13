@@ -1,0 +1,31 @@
+using SLIDING WINDOW approach
+
+public static int birthday(List<Integer> s, int d, int m) {
+    // Write your code here
+        
+        int n = s.size();
+        int ans = 0;
+        int start = 0;
+        int end = m-1;
+        int sum = 0;
+        for(int i=start; i<=end; i++){
+            sum = sum + s.get(i);
+        }
+        if(sum == d){
+            ans += 1;
+        }
+        
+        start=1; end=m;
+        while(end<n){
+            sum = sum - s.get(start-1);
+            sum = sum + s.get(end);
+            if(sum == d){
+                ans += 1;
+            }
+            start++;
+            end++;
+        }
+        return ans;
+    }
+
+}
