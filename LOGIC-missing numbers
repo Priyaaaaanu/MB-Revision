@@ -1,0 +1,31 @@
+public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
+    // Write your code here
+        
+        ArrayList<Integer> ans = new ArrayList<>();
+    
+    
+    HashMap<Integer, Integer> countArr = new HashMap<>();
+    HashMap<Integer, Integer> countBrr = new HashMap<>();
+    
+    
+    for (int num : arr) {
+        countArr.put(num, countArr.getOrDefault(num, 0) + 1);
+    }
+    
+    
+    for (int num : brr) {
+        countBrr.put(num, countBrr.getOrDefault(num, 0) + 1);
+    }
+    
+  
+    for (int num : countBrr.keySet()) {
+        int countInArr = countArr.getOrDefault(num, 0);
+        int countInBrr = countBrr.get(num);
+        
+        if (countInArr < countInBrr) {
+            ans.add(num);
+        }
+    }
+    
+    return ans;
+    }
