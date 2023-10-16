@@ -1,0 +1,12 @@
+public static long strangeCounter(long t) {
+    // Write your code here
+        long i=0;
+        long lValue = (long) (3 * Math.pow(2, i)) - 2;
+        long hValue = 2 * lValue + 1;
+
+        while (hValue < t) {
+            lValue = (long) (3 * Math.pow(2, ++i)) - 2;
+            hValue = 2 * lValue + 1;
+        }
+        return hValue + 1 - t;
+    }
