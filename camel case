@@ -1,0 +1,11 @@
+public static int camelcase(String s) {
+    int wordCount = 1; // Initialize with 1 since there is at least one word (the first word in lowercase)
+
+    for (char c : s.toCharArray()) {
+        if (Character.isUpperCase(c)) {
+            wordCount++;
+        }
+    }
+
+    return wordCount;
+}
