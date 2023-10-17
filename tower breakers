@@ -1,0 +1,9 @@
+public static int towerBreakers(int n, int m) {
+    if (n % 2 == 0 || m == 1) {
+        // If the number of towers is even or height is 1, Player 2 wins.
+        return 2;
+    } else {
+        // Otherwise, Player 1 wins.
+        return 1;
+    }
+}
