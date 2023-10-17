@@ -1,0 +1,15 @@
+public static String caesarCipher(String s, int k) {
+    StringBuilder result = new StringBuilder();
+
+    for (char ch : s.toCharArray()) {
+        if (Character.isLetter(ch)) {
+            char base = Character.isLowerCase(ch) ? 'a' : 'A';
+            char encryptedChar = (char) (base + (ch - base + k) % 26);
+            result.append(encryptedChar);
+        } else {
+            result.append(ch);
+        }
+    }
+
+    return result.toString();
+}
