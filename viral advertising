@@ -1,0 +1,14 @@
+public static int viralAdvertising(int n) {
+    int shared = 5; // Number of people who see the ad on day 1
+    int liked = shared / 2; // Number of people who like the ad on day 1
+    int cumulativeLikes = liked; // Initialize the cumulative likes
+
+    for (int day = 2; day <= n; day++) {
+        shared = liked * 3; // Number of people who see the ad on the next day
+        liked = shared / 2; // Number of people who like the ad on the next day
+        cumulativeLikes += liked; // Update cumulative likes
+    }
+
+    return cumulativeLikes;
+}
+
