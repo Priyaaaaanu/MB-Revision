@@ -1,0 +1,14 @@
+static int getMoneySpent(int[] keyboards, int[] drives, int b) {
+    int maxSpent = -1; // Initialize with -1 to indicate no purchase is possible
+
+    for (int keyboardPrice : keyboards) {
+        for (int drivePrice : drives) {
+            int totalCost = keyboardPrice + drivePrice;
+            if (totalCost <= b && totalCost > maxSpent) {
+                maxSpent = totalCost;
+            }
+        }
+    }
+
+    return maxSpent;
+}
