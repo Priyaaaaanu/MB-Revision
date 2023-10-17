@@ -1,0 +1,11 @@
+public static long marcsCakewalk(List<Integer> calorie) {
+    // Sort the calorie array in reverse order
+    Collections.sort(calorie, Collections.reverseOrder());
+
+    long miles = 0;
+    for (int i = 0; i < calorie.size(); i++) {
+        miles += calorie.get(i) * (long) Math.pow(2, i);
+    }
+
+    return miles;
+}
