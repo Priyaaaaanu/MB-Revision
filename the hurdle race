@@ -1,0 +1,10 @@
+public static int hurdleRace(int k, List<Integer> height) {
+    int maxHurdle = height.stream().max(Integer::compareTo).orElse(0); // Find the tallest hurdle
+    int dosesNeeded = maxHurdle - k; // Calculate the doses needed
+
+    if (dosesNeeded <= 0) {
+        return 0; // No doses needed, Dan can already jump all hurdles
+    } else {
+        return dosesNeeded; // Return the number of doses needed
+    }
+}
