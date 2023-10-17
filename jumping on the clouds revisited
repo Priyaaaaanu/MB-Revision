@@ -1,0 +1,16 @@
+static int jumpingOnClouds(int[] c, int k) {
+    int n = c.length;
+    int energy = 100; // Initial energy level
+    int currentCloud = 0;
+
+    do {
+        currentCloud = (currentCloud + k) % n;
+        energy--;
+
+        if (c[currentCloud] == 1) {
+            energy -= 2; // Decrease energy by 2 if it's a thunderhead cloud
+        }
+    } while (currentCloud != 0);
+
+    return energy;
+}
