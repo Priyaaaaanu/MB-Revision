@@ -1,0 +1,48 @@
+public static String isValid(String s) {
+    int[] charCount = new int[26];
+
+    // Count the frequency of each character
+    for (char c : s.toCharArray()) {
+        charCount[c - 'a']++;
+    }
+
+    // Count the frequency of each frequency value
+    int[] freqCount = new int[s.length() + 1];
+    for (int count : charCount) {
+        if (count > 0) {
+            freqCount[count]++;
+        }
+    }
+
+    int distinctFrequencies = 0;
+    for (int count : freqCount) {
+        if (count > 0) {
+            distinctFrequencies++;
+        }
+    }
+
+    if (distinctFrequencies == 1) {
+        // All characters have the same frequency
+        return "YES";
+    } else if (distinctFrequencies == 2) {
+        // There are two distinct frequencies
+        int freq1 = -1, count1 = 0, freq2 = -1, count2 = 0;
+
+        for (int i = 1; i < freqCount.length; i++) {
+            if (freqCount[i] > 0) {
+                if (freq1 == -1) {
+                    freq1 = i;
+                    count1 = freqCount[i];
+                } else {
+                    freq2 = i;
+                    count2 = freqCount[i];
+                }
+            }
+        }
+
+        if ((count1 == 1 && (freq1 - 1 == freq2 || freq1 == 1)) || (count2 == 1 && (freq2 - 1 == freq1 || freq2 == 1))) {
+            return "YES";
+        }
+    }
+    return "NO";
+}
