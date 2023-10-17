@@ -1,0 +1,24 @@
+public static List<Integer> permutationEquation(List<Integer> p) {
+    int n = p.size();
+    List<Integer> result = new ArrayList<>();
+    
+    int[] indexArray = new int[n + 1]; // Create an index array to store the positions of elements
+    
+    for (int i = 0; i < n; i++) {
+        int value = p.get(i);
+        indexArray[value] = i + 1; // Store the position of each element
+    }
+
+    for (int x = 1; x <= n; x++) {
+        int y = indexArray[indexArray[x]]; // Calculate the value of y
+        result.add(y);
+    }
+    
+    return result;
+}
+You can use this function to find the values of y for each x in the input list p. Make sure you have imported the necessary libraries for List and ArrayList.
+
+
+
+
+
