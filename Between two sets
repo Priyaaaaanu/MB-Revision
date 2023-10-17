@@ -1,0 +1,27 @@
+public static int getTotalX(List<Integer> a, List<Integer> b) {
+    int count = 0;
+    for (int x = a.get(a.size() - 1); x <= b.get(0); x++) {
+        if (isFactorOfArray(x, a) && isFactorOfArray(b, x)) {
+            count++;
+        }
+    }
+    return count;
+}
+
+private static boolean isFactorOfArray(int x, List<Integer> arr) {
+    for (int num : arr) {
+        if (x % num != 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+private static boolean isFactorOfArray(List<Integer> arr, int x) {
+    for (int num : arr) {
+        if (num % x != 0) {
+            return false;
+        }
+    }
+    return true;
+}
