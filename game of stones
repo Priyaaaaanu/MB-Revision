@@ -1,0 +1,8 @@
+public static String gameOfStones(int n) {
+    // If the number of stones is divisible by 7 or 3, the first player (Second) wins. Otherwise, the second player (First) wins.
+    if (n % 7 == 0 || n % 7 == 1) {
+        return "Second";
+    } else {
+        return "First";
+    }
+}
