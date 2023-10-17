@@ -1,0 +1,7 @@
+public static int saveThePrisoner(int n, int m, int s) {
+    int warningChair = (s + m - 1) % n;
+    if (warningChair == 0) {
+        warningChair = n;
+    }
+    return warningChair;
+}
