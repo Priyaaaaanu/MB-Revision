@@ -1,0 +1,10 @@
+public static int howManyGames(int p, int d, int m, int s) {
+    int gamesBought = 0;  // Initialize the count of games bought
+    while (s >= p) {
+        s -= p;  // Deduct the cost of the game from the budget
+        gamesBought++;  // Increment the count of games bought
+        // Reduce the price by 'd' or set to 'm' if it goes below 'm'
+        p = Math.max(p - d, m);
+    }
+    return gamesBought;
+}
