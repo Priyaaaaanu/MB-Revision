@@ -1,0 +1,27 @@
+public static void separateNumbers(String s) {
+    int n = s.length();
+    boolean found = false;
+    
+    for (int i = 1; i <= n / 2; i++) {
+        String firstNumberStr = s.substring(0, i);
+        long firstNumber = Long.parseLong(firstNumberStr);
+        
+        StringBuilder sequence = new StringBuilder(firstNumberStr);
+        long nextNumber = firstNumber + 1;
+        
+        while (sequence.length() < n) {
+            sequence.append(nextNumber);
+            nextNumber++;
+        }
+        
+        if (sequence.toString().equals(s)) {
+            System.out.println("YES " + firstNumber);
+            found = true;
+            break;
+        }
+    }
+    
+    if (!found) {
+        System.out.println("NO");
+    }
+}
