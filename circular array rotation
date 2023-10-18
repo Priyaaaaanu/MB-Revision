@@ -1,0 +1,26 @@
+public static List<Integer> circularArrayRotation(List<Integer> a, int k, List<Integer> queries) {
+    int n = a.size();
+    
+    // Calculate the effective number of rotations by taking the modulo of k with the array size
+    k = k % n;
+    
+    // Create a new list to store the rotated array
+    List<Integer> rotatedArray = new ArrayList<>(n);
+    
+    // Populate the rotated array using elements from the original array
+    for (int i = 0; i < n; i++) {
+        // Calculate the new index for the element after rotation
+        int newIndex = (i + n - k) % n;
+        rotatedArray.add(a.get(newIndex));
+    }
+    
+    // Create a list to store the results of the queries
+    List<Integer> results = new ArrayList<>(queries.size());
+    
+    // Get the values at the specified indices in the rotated array
+    for (int query : queries) {
+        results.add(rotatedArray.get(query));
+    }
+    
+    return results;
+}
