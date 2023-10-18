@@ -1,0 +1,16 @@
+public static int equalizeArray(List<Integer> arr) {
+    // Step 1: Create a map to count the frequency of each element
+    Map<Integer, Integer> frequencyMap = new HashMap<>();
+    for (int num : arr) {
+        frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+    }
+
+    // Step 2: Find the element with the maximum frequency
+    int maxFrequency = Collections.max(frequencyMap.values());
+
+    // Step 3: Calculate the minimum number of deletions
+    int totalElements = arr.size();
+    int deletions = totalElements - maxFrequency;
+
+    return deletions;
+}
