@@ -1,0 +1,15 @@
+public static String angryProfessor(int k, List<Integer> a) {
+    int onTimeOrEarlyCount = 0; // Initialize a counter for on-time or early arrivals.
+    
+    for (int arrivalTime : a) {
+        if (arrivalTime <= 0) {
+            onTimeOrEarlyCount++;
+        }
+    }
+    
+    if (onTimeOrEarlyCount >= k) {
+        return "NO"; // Class is not canceled.
+    } else {
+        return "YES"; // Class is canceled.
+    }
+}
