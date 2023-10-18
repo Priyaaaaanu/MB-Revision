@@ -1,0 +1,4 @@
+public static int squares(int a, int b) {
+    int count = (int) (Math.floor(Math.sqrt(b)) - Math.ceil(Math.sqrt(a)) + 1);
+    return count;
+}
