@@ -1,0 +1,17 @@
+public static int minimumDistances(List<Integer> a) {
+    Map<Integer, Integer> lastIndex = new HashMap<>();
+    int minDistance = Integer.MAX_VALUE;
+
+    for (int i = 0; i < a.size(); i++) {
+        int element = a.get(i);
+
+        if (lastIndex.containsKey(element)) {
+            int distance = i - lastIndex.get(element);
+            minDistance = Math.min(minDistance, distance);
+        }
+
+        lastIndex.put(element, i);
+    }
+
+    return minDistance == Integer.MAX_VALUE ? -1 : minDistance;
+}
