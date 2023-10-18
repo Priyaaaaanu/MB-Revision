@@ -1,0 +1,23 @@
+import java.util.*;
+
+public static List<String> bigSorting(List<String> unsorted) {
+    // Define a custom comparator to compare numeric values as strings
+    Comparator<String> numericStringComparator = new Comparator<String>() {
+        @Override
+        public int compare(String a, String b) {
+            // Compare the lengths of the strings first
+            int lengthComparison = Integer.compare(a.length(), b.length());
+            if (lengthComparison != 0) {
+                return lengthComparison;
+            }
+            
+            // If the lengths are the same, compare the string values lexicographically
+            return a.compareTo(b);
+        }
+    };
+
+    // Sort the array using the custom comparator
+    Collections.sort(unsorted, numericStringComparator);
+
+    return unsorted;
+}
