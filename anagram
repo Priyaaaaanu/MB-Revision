@@ -1,0 +1,32 @@
+public static int anagram(String s) {
+    int length = s.length();
+    
+    // Check if the length of the string is odd (cannot split into two substrings)
+    if (length % 2 != 0) {
+        return -1;
+    }
+
+    // Split the string into two substrings
+    String s1 = s.substring(0, length / 2);
+    String s2 = s.substring(length / 2);
+
+    // Count the frequency of characters in the substrings
+    int[] frequency1 = new int[26];
+    int[] frequency2 = new int[26];
+
+    for (char c : s1.toCharArray()) {
+        frequency1[c - 'a']++;
+    }
+    for (char c : s2.toCharArray()) {
+        frequency2[c - 'a']++;
+    }
+
+    // Calculate the difference in character frequencies
+    int changesRequired = 0;
+    for (int i = 0; i < 26; i++) {
+        changesRequired += Math.abs(frequency1[i] - frequency2[i]);
+    }
+
+    // The minimum number of changes is half of the total differences
+    return changesRequired / 2;
+}
