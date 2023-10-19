@@ -1,0 +1,10 @@
+public static long repeatedString(String s, long n) {
+    long countInS = s.chars().filter(ch -> ch == 'a').count();
+    long repeats = n / s.length();
+    long totalCount = repeats * countInS;
+    
+    long remainingChars = n % s.length();
+    long additionalCount = s.substring(0, (int)remainingChars).chars().filter(ch -> ch == 'a').count();
+    
+    return totalCount + additionalCount;
+}
