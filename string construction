@@ -1,0 +1,10 @@
+public static int stringConstruction(String s) {
+    Set<Character> uniqueChars = new HashSet<>();
+    
+    // Count the number of unique characters in the string
+    for (char c : s.toCharArray()) {
+        uniqueChars.add(c);
+    }
+    
+    return uniqueChars.size();
+}
