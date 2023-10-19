@@ -1,0 +1,28 @@
+public static String gridSearch(List<String> G, List<String> P) {
+    int n = G.size(); // Number of rows in the grid
+    int m = G.get(0).length(); // Length of each row in the grid
+    int r = P.size(); // Number of rows in the pattern
+    int c = P.get(0).length(); // Length of each row in the pattern
+    
+    for (int i = 0; i <= n - r; i++) {
+        for (int j = 0; j <= m - c; j++) {
+            // Check if the subgrid of G matches P
+            boolean match = true;
+            for (int k = 0; k < r; k++) {
+                for (int l = 0; l < c; l++) {
+                    if (G.get(i + k).charAt(j + l) != P.get(k).charAt(l)) {
+                        match = false;
+                        break;
+                    }
+                }
+                if (!match) break;
+            }
+            
+            if (match) {
+                return "YES";
+            }
+        }
+    }
+    
+    return "NO";
+}
