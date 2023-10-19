@@ -1,0 +1,23 @@
+public static String counterGame(long n) {
+    int turn = 0; // 0 represents Louise's turn, 1 represents Richard's turn
+
+    while (n > 1) {
+        // Check if n is a power of 2
+        if ((n & (n - 1)) == 0) {
+            // If n is a power of 2, divide it by 2.
+            n /= 2;
+        } else {
+            // Find the largest power of 2 less than n.
+            long largestPowerOf2 = Long.highestOneBit(n - 1);
+
+            // Reduce n by the largest power of 2.
+            n -= largestPowerOf2;
+        }
+
+        // Toggle the turn (0 to 1 or 1 to 0).
+        turn = 1 - turn;
+    }
+
+    // If it's Louise's turn (turn = 0), she loses. Otherwise, Richard wins.
+    return (turn == 0) ? "Richard" : "Louise";
+}
