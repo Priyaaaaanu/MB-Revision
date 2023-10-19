@@ -1,0 +1,52 @@
+public static String encryption(String s) {
+    // Remove spaces from the input string
+    s = s.replaceAll(" ", "");
+
+    // Calculate the number of rows and columns for the grid
+    int length = s.length();
+    int rows = (int) Math.floor(Math.sqrt(length));
+    int columns = (int) Math.ceil(Math.sqrt(length));
+
+    // Handle cases where rows * columns is less than the length
+    if (rows * columns < length) {
+        rows = columns;
+    }
+
+    // Initialize a 2D array for the grid
+    char[][] grid = new char[rows][columns];
+
+    // Populate the grid with characters from the cleaned string
+    int index = 0;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            if (index < length) {
+                grid[i][j] = s.charAt(index);
+                index++;
+            }
+        }
+    }
+
+    // Extract the encoded message
+    StringBuilder encodedMessage = new StringBuilder();
+    for (int j = 0; j < columns; j++) {
+        for (int i = 0; i < rows; i++) {
+            if (grid[i][j] != '\u0000') {
+                encodedMessage.append(grid[i][j]);
+            }
+        }
+        encodedMessage.append(" ");
+    }
+
+    // Remove the trailing space and return the encoded message
+    return encodedMessage.toString().trim();
+}
+
+public static void main(String[] args) {
+    String input1 = "haveaniceday";
+    String input2 = "feedthedog";
+    String input3 = "chillout";
+
+    System.out.println(encryption(input1)); // Output: "hae and via ecy"
+    System.out.println(encryption(input2)); // Output: "fto ehg ee dd"
+    System.out.println(encryption(input3)); // Output: "clu hlt io"
+}
