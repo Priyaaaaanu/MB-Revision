@@ -1,0 +1,25 @@
+public static int pickingNumbers(List<Integer> a) {
+    int maxLength = 0;
+
+    // Create a frequency map of elements in the array
+    Map<Integer, Integer> freqMap = new HashMap<>();
+    for (int num : a) {
+        freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+    }
+
+    // Iterate through the elements in the array
+    for (int num : freqMap.keySet()) {
+        int count = freqMap.get(num);
+
+        // Check the count of elements within an absolute difference of 1 or 0
+        int countWithOne = freqMap.getOrDefault(num + 1, 0);
+        int countWithZero = count + countWithOne;
+
+        // Update the maximum length if necessary
+        if (countWithZero > maxLength) {
+            maxLength = countWithZero;
+        }
+    }
+
+    return maxLength;
+}
