@@ -1,0 +1,20 @@
+public static int flippingMatrix(List<List<Integer>> matrix) {
+    int n = matrix.size() / 2; // Determine the value of n
+
+    int maxSum = 0;
+    
+    // Iterate through each cell in the upper-left quadrant
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            // Find the maximum value from the four possible values by symmetry
+            int maxValue = Math.max(matrix.get(i).get(j), matrix.get(i).get(2 * n - j - 1));
+            maxValue = Math.max(maxValue, matrix.get(2 * n - i - 1).get(j));
+            maxValue = Math.max(maxValue, matrix.get(2 * n - i - 1).get(2 * n - j - 1));
+            
+            // Accumulate the maximum value
+            maxSum += maxValue;
+        }
+    }
+    
+    return maxSum;
+}
