@@ -1,0 +1,17 @@
+public static int maxMin(int k, List<Integer> arr) {
+    // Sort the array in ascending order.
+    Collections.sort(arr);
+    
+    int n = arr.size();
+    int minUnfairness = Integer.MAX_VALUE;
+    
+    // Iterate through the array to find the minimum unfairness for each subarray of length k.
+    for (int i = 0; i <= n - k; i++) {
+        int currentUnfairness = arr.get(i + k - 1) - arr.get(i);
+        if (currentUnfairness < minUnfairness) {
+            minUnfairness = currentUnfairness;
+        }
+    }
+    
+    return minUnfairness;
+}
