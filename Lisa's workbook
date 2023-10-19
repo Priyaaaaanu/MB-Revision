@@ -1,0 +1,28 @@
+public static int workbook(int n, int k, List<Integer> arr) {
+    int specialProblems = 0;
+    int page = 1;
+
+    for (int chapter = 0; chapter < n; chapter++) {
+        int problemsInChapter = arr.get(chapter);
+        int currentPage = 1; // Start from the first page in each chapter
+
+        for (int problem = 1; problem <= problemsInChapter; problem++) {
+            if (problem == page) {
+                specialProblems++; // Found a special problem
+            }
+
+            if (currentPage < k) {
+                currentPage++;
+            } else {
+                page++; // Move to the next page
+                currentPage = 1;
+            }
+        }
+
+        if (currentPage > 1) {
+            page++; // Move to the next page for the next chapter
+        }
+    }
+
+    return specialProblems;
+}
