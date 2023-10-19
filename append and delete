@@ -1,0 +1,19 @@
+public static String appendAndDelete(String s, String t, int k) {
+    int commonPrefixLength = 0;
+    int minOperations;
+
+    // Find the length of the common prefix
+    while (commonPrefixLength < Math.min(s.length(), t.length()) && s.charAt(commonPrefixLength) == t.charAt(commonPrefixLength)) {
+        commonPrefixLength++;
+    }
+
+    // Calculate the total operations required
+    minOperations = s.length() - commonPrefixLength + t.length() - commonPrefixLength;
+
+    // Check if it's possible to perform exactly k operations
+    if (k >= s.length() + t.length() || (k >= minOperations && (k - minOperations) % 2 == 0) || k >= s.length() + t.length()) {
+        return "Yes";
+    } else {
+        return "No";
+    }
+}
