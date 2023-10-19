@@ -1,0 +1,33 @@
+public static int gemstones(List<String> arr) {
+    int[] mineralsInRocks = new int[26]; // Initialize an array to track minerals
+    
+    // Initialize the mineralsInRocks array with 1 for the first rock
+    for (char mineral : arr.get(0).toCharArray()) {
+        mineralsInRocks[mineral - 'a'] = 1;
+    }
+    
+    // Iterate through the remaining rocks
+    for (int i = 1; i < arr.size(); i++) {
+        boolean[] mineralsInThisRock = new boolean[26];
+        
+        // Mark minerals that appear in this rock
+        for (char mineral : arr.get(i).toCharArray()) {
+            mineralsInThisRock[mineral - 'a'] = true;
+        }
+        
+        // Update mineralsInRocks array to include only the minerals that appear in this rock
+        for (int j = 0; j < 26; j++) {
+            mineralsInRocks[j] = (mineralsInRocks[j] == 1 && mineralsInThisRock[j]) ? 1 : 0;
+        }
+    }
+    
+    // Count the number of gemstones
+    int gemstonesCount = 0;
+    for (int count : mineralsInRocks) {
+        if (count == 1) {
+            gemstonesCount++;
+        }
+    }
+    
+    return gemstonesCount;
+}
