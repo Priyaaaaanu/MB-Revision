@@ -1,0 +1,14 @@
+public static long sumXor(long n) {
+    int count = 0;
+    
+    // Count the number of unset bits in n
+    while (n > 0) {
+        if ((n & 1) == 0) {
+            count++;
+        }
+        n >>= 1;
+    }
+    
+    // The number of values that satisfy the condition is 2^count
+    return (long) Math.pow(2, count);
+}
