@@ -1,0 +1,34 @@
+public static List<String> cavityMap(List<String> grid) {
+    int n = grid.size();
+
+    // Convert the List of strings to a 2D array for easy access to individual characters
+    char[][] map = new char[n][n];
+    for (int i = 0; i < n; i++) {
+        map[i] = grid.get(i).toCharArray();
+    }
+
+    // Iterate through the interior cells and check for cavities
+    for (int i = 1; i < n - 1; i++) {
+        for (int j = 1; j < n - 1; j++) {
+            char cell = map[i][j];
+            char cellAbove = map[i - 1][j];
+            char cellBelow = map[i + 1][j];
+            char cellLeft = map[i][j - 1];
+            char cellRight = map[i][j + 1];
+
+            // Check if the cell is deeper than all of its adjacent cells
+            if (cell > cellAbove && cell > cellBelow && cell > cellLeft && cell > cellRight) {
+                // Replace the cell with 'X'
+                map[i][j] = 'X';
+            }
+        }
+    }
+
+    // Convert the 2D array back to a List of strings
+    List<String> result = new ArrayList<>();
+    for (int i = 0; i < n; i++) {
+        result.add(new String(map[i]));
+    }
+
+    return result;
+}
