@@ -1,0 +1,44 @@
+public static int palindromeIndex(String s) {
+    int left = 0;
+    int right = s.length() - 1;
+
+    while (left < right) {
+        if (s.charAt(left) != s.charAt(right)) {
+            // Try removing character at the left index
+            boolean leftRemovalPalindrome = isPalindrome(s.substring(0, left) + s.substring(left + 1));
+            if (leftRemovalPalindrome) {
+                return left;
+            }
+
+            // Try removing character at the right index
+            boolean rightRemovalPalindrome = isPalindrome(s.substring(0, right) + s.substring(right + 1));
+            if (rightRemovalPalindrome) {
+                return right;
+            }
+
+            // If neither character can be removed, return -1
+            return -1;
+        }
+
+        left++;
+        right--;
+    }
+
+    // The string is already a palindrome
+    return -1;
+}
+
+public static boolean isPalindrome(String s) {
+    int left = 0;
+    int right = s.length() - 1;
+
+    while (left < right) {
+        if (s.charAt(left) != s.charAt(right)) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+
+    return true;
+}
