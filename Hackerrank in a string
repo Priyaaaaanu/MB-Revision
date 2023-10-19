@@ -1,0 +1,15 @@
+public static String hackerrankInString(String s) {
+    String target = "hackerrank";
+    int index = 0; // Index for the characters in the target word
+    
+    for (char c : s.toCharArray()) {
+        if (c == target.charAt(index)) {
+            index++; // Move to the next character in the target word
+            if (index == target.length()) {
+                return "YES"; // Found all characters in the correct order
+            }
+        }
+    }
+    
+    return "NO"; // All characters were not found in the correct order
+}
