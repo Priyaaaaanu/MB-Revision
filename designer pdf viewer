@@ -1,0 +1,15 @@
+public static int designerPdfViewer(List<Integer> h, String word) {
+    int maxHeight = 0;
+
+    // Iterate through the letters in the word and find the maximum height
+    for (char letter : word.toCharArray()) {
+        int letterIndex = letter - 'a';
+        int letterHeight = h.get(letterIndex);
+        maxHeight = Math.max(maxHeight, letterHeight);
+    }
+
+    // Calculate the area by multiplying the maxHeight by the width of the word
+    int area = maxHeight * word.length();
+    
+    return area;
+}
