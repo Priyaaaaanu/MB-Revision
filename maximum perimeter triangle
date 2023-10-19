@@ -1,0 +1,27 @@
+public static List<Integer> maximumPerimeterTriangle(List<Integer> sticks) {
+    int n = sticks.size();
+    
+    // Sort the stick lengths in non-decreasing order
+    Collections.sort(sticks, Collections.reverseOrder());
+    
+    for (int i = 0; i < n - 2; i++) {
+        int a = sticks.get(i);
+        int b = sticks.get(i + 1);
+        int c = sticks.get(i + 2);
+        
+        // Check if a, b, and c can form a non-degenerate triangle
+        if (a < b + c) {
+            // If so, return them in non-decreasing order
+            List<Integer> result = new ArrayList<>();
+            result.add(c);
+            result.add(b);
+            result.add(a);
+            return result;
+        }
+    }
+    
+    // If no non-degenerate triangle exists, return -1
+    List<Integer> result = new ArrayList<>();
+    result.add(-1);
+    return result;
+}
