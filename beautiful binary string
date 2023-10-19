@@ -1,0 +1,20 @@
+public static int beautifulBinaryString(String b) {
+    int steps = 0;
+    int index = 0;
+    
+    while (index < b.length()) {
+        // Search for the next occurrence of "010"
+        index = b.indexOf("010", index);
+        
+        // If found, replace "010" with "011" and increment steps
+        if (index != -1) {
+            b = b.substring(0, index + 2) + "1" + b.substring(index + 3);
+            steps++;
+            index += 3;  // Move the index past the replaced characters
+        } else {
+            break;  // No more "010" substrings found, exit the loop
+        }
+    }
+    
+    return steps;
+}
