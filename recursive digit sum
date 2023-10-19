@@ -1,0 +1,18 @@
+public static int superDigit(String n, int k) {
+    // Base case: If n is a single digit, return it as the super digit
+    if (n.length() == 1) {
+        return Integer.parseInt(n);
+    }
+    
+    // Calculate the sum of the digits in n
+    long digitSum = 0;
+    for (char digit : n.toCharArray()) {
+        digitSum += digit - '0';
+    }
+    
+    // Multiply the digit sum by k
+    digitSum *= k;
+    
+    // Recursively call superDigit with the new digit sum
+    return superDigit(Long.toString(digitSum), 1);
+}
