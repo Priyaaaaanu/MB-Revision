@@ -1,0 +1,15 @@
+public static int utopianTree(int n) {
+    int height = 1;  // Initial height of the tree
+    
+    for (int cycle = 0; cycle < n; cycle++) {
+        if (cycle % 2 == 0) {
+            // Spring (even cycle): Double the height
+            height *= 2;
+        } else {
+            // Summer (odd cycle): Increase the height by 1 meter
+            height += 1;
+        }
+    }
+    
+    return height;
+}
