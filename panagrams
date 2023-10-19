@@ -1,0 +1,24 @@
+public static String pangrams(String s) {
+    // Convert the input string to lowercase to ignore case
+    s = s.toLowerCase();
+    
+    // Create a boolean array to represent the presence of each letter
+    boolean[] alphabet = new boolean[26];  // 26 letters in the English alphabet
+    
+    // Iterate through the string and mark the presence of each letter
+    for (int i = 0; i < s.length(); i++) {
+        char c = s.charAt(i);
+        if (Character.isLetter(c)) {
+            alphabet[c - 'a'] = true;
+        }
+    }
+    
+    // Check if all letters in the alphabet are present
+    for (boolean letter : alphabet) {
+        if (!letter) {
+            return "not pangram";  // Not all letters are present
+        }
+    }
+    
+    return "pangram";  // All letters are present
+}
