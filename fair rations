@@ -1,0 +1,19 @@
+public static String fairRations(List<Integer> B) {
+    int loavesToDistribute = 0;
+    int n = B.size();
+
+    for (int i = 0; i < n - 1; i++) {
+        if (B.get(i) % 2 == 1) {
+            B.set(i, B.get(i) + 1);
+            B.set(i + 1, B.get(i + 1) + 1);
+            loavesToDistribute += 2;
+        }
+    }
+
+    // Check if the last person has an even number of loaves
+    if (B.get(n - 1) % 2 == 1) {
+        return "NO";
+    } else {
+        return String.valueOf(loavesToDistribute);
+    }
+}
