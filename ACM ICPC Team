@@ -1,0 +1,28 @@
+public static List<Integer> acmTeam(List<String> topic) {
+    int n = topic.size(); // Number of attendees
+    int m = topic.get(0).length(); // Number of topics
+    int maxTopics = 0; // Maximum number of topics known
+    int teamCount = 0; // Number of teams knowing the maximum number of topics
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            int topicsKnown = 0;
+            for (int k = 0; k < m; k++) {
+                if (topic.get(i).charAt(k) == '1' || topic.get(j).charAt(k) == '1') {
+                    topicsKnown++;
+                }
+            }
+            if (topicsKnown > maxTopics) {
+                maxTopics = topicsKnown;
+                teamCount = 1;
+            } else if (topicsKnown == maxTopics) {
+                teamCount++;
+            }
+        }
+    }
+
+    List<Integer> result = new ArrayList<>();
+    result.add(maxTopics);
+    result.add(teamCount);
+    return result;
+}
