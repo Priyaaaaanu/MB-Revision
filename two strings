@@ -1,0 +1,18 @@
+public static String twoStrings(String s1, String s2) {
+    // Create an array to track the occurrence of characters in s1
+    boolean[] charSet = new boolean[26]; // Assuming lowercase English letters
+
+    // Mark characters from s1 in the charSet array
+    for (char c : s1.toCharArray()) {
+        charSet[c - 'a'] = true;
+    }
+
+    // Check if there's a common character in s2
+    for (char c : s2.toCharArray()) {
+        if (charSet[c - 'a']) {
+            return "YES"; // If a common character is found, return "YES"
+        }
+    }
+
+    return "NO"; // If no common character is found, return "NO"
+}
