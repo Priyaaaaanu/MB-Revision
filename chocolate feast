@@ -1,0 +1,17 @@
+public static int chocolateFeast(int n, int c, int m) {
+    // Calculate the initial number of chocolates Bobby can buy
+    int chocolatesBought = n / c;
+    // Initialize the total chocolates eaten
+    int totalChocolatesEaten = chocolatesBought;
+    // Initialize the wrappers Bobby has
+    int wrappers = chocolatesBought;
+    
+    // Continue trading wrappers for more chocolates
+    while (wrappers >= m) {
+        int newChocolates = wrappers / m; // Trade wrappers for new chocolates
+        totalChocolatesEaten += newChocolates; // Add new chocolates to the total
+        wrappers = newChocolates + (wrappers % m); // Calculate new wrappers
+    }
+    
+    return totalChocolatesEaten;
+}
