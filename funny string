@@ -1,0 +1,20 @@
+public static String funnyString(String s) {
+    int n = s.length();
+    
+    // Create a StringBuilder to reverse the string
+    StringBuilder reversed = new StringBuilder(s).reverse();
+    
+    // Iterate through the characters of the original and reversed strings
+    for (int i = 1; i < n; i++) {
+        int diffOriginal = Math.abs(s.charAt(i) - s.charAt(i - 1));
+        int diffReversed = Math.abs(reversed.charAt(i) - reversed.charAt(i - 1));
+        
+        // If the absolute differences are not the same, it's not funny
+        if (diffOriginal != diffReversed) {
+            return "Not Funny";
+        }
+    }
+    
+    // If all differences are the same, it's funny
+    return "Funny";
+}
