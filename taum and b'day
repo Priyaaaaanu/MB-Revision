@@ -1,0 +1,14 @@
+public static long taumBday(int b, int w, int bc, int wc, int z) {
+    long minCost;
+
+    // If converting is cheaper
+    if (bc > wc + z) {
+        minCost = (long)b * (wc + z) + (long)w * wc;
+    } else if (wc > bc + z) {
+        minCost = (long)b * bc + (long)w * (bc + z);
+    } else {
+        minCost = (long)b * bc + (long)w * wc;
+    }
+
+    return minCost;
+}
