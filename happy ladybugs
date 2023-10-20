@@ -1,0 +1,60 @@
+public static String happyLadybugs(String b) {
+    int n = b.length();
+    boolean allHappy = true;
+    boolean hasEmptyCell = false;
+
+    // Check if all ladybugs are already happy
+    for (int i = 0; i < n; i++) {
+        char currentBug = b.charAt(i);
+        if (currentBug != '_') {
+            boolean happy = false;
+
+            if (i > 0 && b.charAt(i - 1) == currentBug) {
+                happy = true;
+            }
+
+            if (i < n - 1 && b.charAt(i + 1) == currentBug) {
+                happy = true;
+            }
+
+            if (!happy) {
+                allHappy = false;
+            }
+        } else {
+            hasEmptyCell = true;
+        }
+    }
+
+    // Case 1: All ladybugs are already happy
+    if (allHappy) {
+        return "YES";
+    }
+
+    // Case 2: No empty cells, and the ladybugs are not arranged for happiness
+    if (!hasEmptyCell) {
+        return "NO";
+    }
+
+    // Case 3: There are empty cells, and there is at least one pair of ladybugs with the same color
+    for (char ladybug = 'A'; ladybug <= 'Z'; ladybug++) {
+        if (ladybug != '_') {
+            int count = countLadybugs(b, ladybug);
+            if (count == 1) {
+                return "NO";
+            }
+        }
+    }
+
+    // Case 4: No pairs of ladybugs with the same color
+    return "YES";
+}
+
+private static int countLadybugs(String b, char ladybug) {
+    int count = 0;
+    for (int i = 0; i < b.length(); i++) {
+        if (b.charAt(i) == ladybug) {
+            count++;
+        }
+    }
+    return count;
+}
