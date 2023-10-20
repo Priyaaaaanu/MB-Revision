@@ -1,0 +1,19 @@
+public static int maximumToys(List<Integer> prices, int k) {
+    // Sort the toy prices in ascending order
+    Collections.sort(prices);
+    
+    int toysBought = 0;
+    int remainingBudget = k;
+    
+    for (int price : prices) {
+        if (price <= remainingBudget) {
+            remainingBudget -= price;
+            toysBought++;
+        } else {
+            // If the price is higher than the remaining budget, Mark can't buy more toys.
+            break;
+        }
+    }
+    
+    return toysBought;
+}
