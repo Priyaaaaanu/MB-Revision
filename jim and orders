@@ -1,0 +1,28 @@
+public static List<Integer> jimOrders(List<List<Integer>> orders) {
+    List<int[]> deliveryTimes = new ArrayList<>();
+
+    // Create a list of tuples (customer number, delivery time)
+    for (int i = 0; i < orders.size(); i++) {
+        int orderNumber = orders.get(i).get(0);
+        int prepTime = orders.get(i).get(1);
+        int deliveryTime = orderNumber + prepTime;
+        deliveryTimes.add(new int[]{i + 1, deliveryTime});
+    }
+
+    // Sort the list of tuples by delivery time and customer number
+    deliveryTimes.sort((a, b) -> {
+        if (a[1] == b[1]) {
+            return a[0] - b[0];
+        }
+        return a[1] - b[1];
+    });
+
+    List<Integer> result = new ArrayList<>();
+
+    // Extract customer numbers from the sorted list
+    for (int[] pair : deliveryTimes) {
+        result.add(pair[0]);
+    }
+
+    return result;
+}
