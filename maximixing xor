@@ -1,0 +1,14 @@
+public static int maximizingXor(int l, int r) {
+    int maxXOR = 0;
+
+    for (int i = l; i <= r; i++) {
+        for (int j = i; j <= r; j++) {
+            int currentXOR = i ^ j; // Calculate XOR for the pair (i, j)
+            if (currentXOR > maxXOR) {
+                maxXOR = currentXOR;
+            }
+        }
+    }
+
+    return maxXOR;
+}
