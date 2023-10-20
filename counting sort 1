@@ -1,0 +1,17 @@
+public static List<Integer> countingSort(List<Integer> arr) {
+    // Initialize the frequency array with 100 elements (as per the instructions)
+    int[] frequency = new int[100];
+
+    // Count the frequency of each element in the input array
+    for (int num : arr) {
+        frequency[num]++;
+    }
+
+    // Convert the frequency array to a list of integers
+    List<Integer> frequencyList = new ArrayList<>();
+    for (int count : frequency) {
+        frequencyList.add(count);
+    }
+
+    return frequencyList;
+}
