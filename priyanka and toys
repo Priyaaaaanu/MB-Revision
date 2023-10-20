@@ -1,0 +1,22 @@
+public static int toys(List<Integer> w) {
+    // Sort the list of item weights in ascending order
+    Collections.sort(w);
+
+    int containers = 0; // Initialize the container count
+    int currentContainerMinWeight = -1; // Initialize the minimum weight for the current container
+
+    for (int weight : w) {
+        if (currentContainerMinWeight == -1) {
+            // Start a new container if it's the first item
+            currentContainerMinWeight = weight;
+            containers++;
+        } else if (weight > currentContainerMinWeight + 4) {
+            // If the item's weight exceeds the limit, start a new container
+            currentContainerMinWeight = weight;
+            containers++;
+        }
+        // Items within the limit will be added to the current container
+    }
+
+    return containers;
+}
