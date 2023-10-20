@@ -1,0 +1,23 @@
+public static String balancedSums(List<Integer> arr) {
+    int n = arr.size();
+    int leftSum = 0;
+    int totalSum = 0;
+
+    // Calculate the total sum of the array
+    for (int num : arr) {
+        totalSum += num;
+    }
+
+    for (int i = 0; i < n; i++) {
+        // If left sum is equal to right sum, return "YES"
+        if (leftSum == totalSum - leftSum - arr.get(i)) {
+            return "YES";
+        }
+
+        // Update the left sum for the next iteration
+        leftSum += arr.get(i);
+    }
+
+    // If no such index exists, return "NO"
+    return "NO";
+}
