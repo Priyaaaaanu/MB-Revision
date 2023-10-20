@@ -1,0 +1,12 @@
+public static String twoArrays(int k, List<Integer> A, List<Integer> B) {
+    Collections.sort(A); // Sort array A in ascending order
+    Collections.sort(B, Collections.reverseOrder()); // Sort array B in descending order
+
+    for (int i = 0; i < A.size(); i++) {
+        if (A.get(i) + B.get(i) < k) {
+            return "NO"; // If any pair violates the condition, return "NO"
+        }
+    }
+
+    return "YES"; // All pairs satisfy the condition
+}
