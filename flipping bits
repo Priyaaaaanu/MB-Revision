@@ -1,0 +1,9 @@
+public static long flippingBits(long n) {
+    // Create a mask with all 1s for 32-bit unsigned integer
+    long mask = (1L << 32) - 1;
+    
+    // Perform a bitwise XOR operation to flip all the bits
+    long result = n ^ mask;
+    
+    return result;
+}
