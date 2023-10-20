@@ -1,0 +1,11 @@
+public static int findMedian(List<Integer> arr) {
+    // Sort the array
+    Collections.sort(arr);
+
+    // Find the median
+    int n = arr.size();
+    int medianIndex = n / 2;
+    int median = arr.get(medianIndex);
+
+    return median;
+}
