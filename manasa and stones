@@ -1,0 +1,11 @@
+public static List<Integer> stones(int n, int a, int b) {
+    // Write your code here
+         Set<Integer> resultSet = new TreeSet<>();
+
+    for (int i = 0; i < n; i++) {
+        int result = i * a + (n - 1 - i) * b;
+        resultSet.add(result);
+    }
+
+    return new ArrayList<>(resultSet);
+    }
