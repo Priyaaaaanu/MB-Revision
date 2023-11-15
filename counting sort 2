@@ -1,0 +1,24 @@
+public static List<Integer> countingSort(List<Integer> arr) {
+    // Write your code here
+        int maxElement = Collections.max(arr);
+    int[] countArray = new int[maxElement + 1]; // Create an array to store counts
+    
+    // Count occurrences of each element
+    for (int num : arr) {
+        countArray[num]++;
+    }
+    
+    List<Integer> sortedArray = new ArrayList<>();
+    
+    // Reconstruct the sorted array using countArray
+    for (int i = 0; i <= maxElement; i++) {
+        while (countArray[i] > 0) {
+            sortedArray.add(i);
+            countArray[i]--;
+        }
+    }
+    
+    return sortedArray;
+    }
+
+}
