@@ -1,0 +1,29 @@
+public static void decentNumber(int n) {
+    // Write your code here
+         int numFives = -1;
+    int numThrees;
+
+    for (int i = n; i >= 0; i -= 5) {
+        if (i % 3 == 0) {
+            numFives = i;
+            break;
+        }
+    }
+
+    numThrees = n - numFives;
+
+    if (numFives >= 0 && numThrees >= 0) {
+        StringBuilder result = new StringBuilder();
+        while (numFives-- > 0) {
+            result.append('5');
+        }
+        while (numThrees-- > 0) {
+            result.append('3');
+        }
+        System.out.println(result);
+    } else {
+        System.out.println(-1);
+    }
+    }
+
+}
