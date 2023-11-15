@@ -1,0 +1,26 @@
+public static void kaprekarNumbers(int p, int q) {
+    // Write your code here
+         boolean found = false;
+    for (long i = p; i <= q; i++) {
+        long square = i * i;
+        String squareStr = String.valueOf(square);
+        int d = String.valueOf(i).length();
+        int len = squareStr.length();
+        
+        String right = squareStr.substring(len - d);
+        String left = len - d > 0 ? squareStr.substring(0, len - d) : "0";
+
+        long leftNum = Long.parseLong(left);
+        long rightNum = Long.parseLong(right);
+
+        if (leftNum + rightNum == i) {
+            System.out.print(i + " ");
+            found = true;
+        }
+    }
+    if (!found) {
+        System.out.print("INVALID RANGE");
+    }
+    }
+
+}
