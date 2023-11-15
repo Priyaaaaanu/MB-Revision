@@ -1,0 +1,24 @@
+public static String organizingContainers(List<List<Integer>> container) {
+    // Write your code here
+        
+        int n = container.size();
+    int[] containerCapacity = new int[n];
+    int[] ballCount = new int[n];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            containerCapacity[i] += container.get(i).get(j);
+            ballCount[j] += container.get(i).get(j);
+        }
+    }
+
+    // Sort both arrays to compare them for equality
+    Arrays.sort(containerCapacity);
+    Arrays.sort(ballCount);
+
+    // If both arrays are equal, it's possible to arrange the balls as required
+    return Arrays.equals(containerCapacity, ballCount) ? "Possible" : "Impossible";
+
+    }
+
+}
