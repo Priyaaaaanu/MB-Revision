@@ -1,0 +1,18 @@
+ static int getMinimumCost(int k, int[] c) {
+        Arrays.sort(c);
+    int n = c.length;
+    int minCost = 0;
+    int multiplier = 1;
+    
+    // Start purchasing from the most expensive flowers
+    for (int i = n - 1; i >= 0; i--) {
+        // Calculate the cost by multiplying the price with the multiplier
+        minCost += c[i] * multiplier;
+        // Increment the multiplier after each friend buys a flower
+        if ((n - i) % k == 0) {
+            multiplier++;
+        }
+    }
+    return minCost;
+
+    }
